@@ -17,6 +17,8 @@ class TasksController < ApplicationController
     # Save to DB
     def create
         @task = Task.new(task_params)
+        @task.user_id = current_user.id
+
         if @task.save
             # TODO: Add flash message with success
             redirect_to tasks_path
